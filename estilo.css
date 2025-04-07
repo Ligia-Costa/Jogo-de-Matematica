@@ -1,0 +1,147 @@
+/* Estilização geral */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container da tela inicial */
+#tela-inicial {
+    text-align: center;
+}
+
+/* Título */
+#tela-inicial h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Campo de nome */
+#nome-usuario {
+    padding: 12px;
+    font-size: 16px;
+    width: 280px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+/* Botão iniciar */
+#tela-inicial button {
+    padding: 10px 24px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#tela-inicial button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Caixa principal do jogo */
+#container-jogo {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Nome do jogador */
+#jogador-atual {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Timer */
+#tempo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 20px;
+}
+
+/* Operação matemática em destaque */
+#pergunta {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 30px 0 20px;
+    color: #333;
+}
+
+/* Campo de resposta */
+#resposta {
+    padding: 10px;
+    width: 180px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Botão estilizado */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#limpar{
+    background-color: black;
+}
+
+#salvar{
+    background-color: rgb(209, 209, 16);
+}
+
+/* Pontuação */
+#pontuacao {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Ranking */
+#ranking-container {
+    margin-top: 30px;
+    display: none;
+}
+
+.list-group-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px auto;
+    width: 250px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.d-none {
+    display: none;
+}
