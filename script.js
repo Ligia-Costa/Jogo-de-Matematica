@@ -98,43 +98,40 @@ function atualizarRanking() {
 // Função para salvar o ranking em um arquivo TXT
 function salvarRanking() {
     if (ranking.length === 0) {
-        alert("O ranking está vazio."); // Alerta se não há jogadores
+        alert("O ranking está vazio.");
         return;
     }
 
-    let textoRanking = "Ranking do Jogo do Cronômetro:\n\n"; // Cabeçalho do ranking
+    let textoRanking = "Ranking do Matemáticando:\n\n";
 
-    // Monta o conteúdo do ranking
     ranking.forEach(function(jogador, index) {
-        // Formata a pontuação: transforma milissegundos em segundos com duas casas
-        const pontuacaoFormatada = jogador.pontuacao < 0
-            ? '-' + Math.abs(Math.floor(jogador.pontuacao / 1000)) + '.' + String(Math.abs(jogador.pontuacao) % 1000).padStart(3, '0').slice(0, 2)
-            : Math.floor(jogador.pontuacao / 1000) + '.' + String(jogador.pontuacao % 1000).padStart(3, '0').slice(0, 2);
-
-        // Adiciona uma linha ao texto
+        const pontuacaoFormatada = jogador.pontuacao + " pts";
         textoRanking += obterOrdinal(index + 1) + ' Lugar: ' + jogador.nome + ' - ' + pontuacaoFormatada + '\n';
     });
 
-    // Cria o nome do arquivo com data e hora
     const agora = new Date();
     const dataFormatada = agora.toLocaleDateString('pt-BR').replace(/\//g, '-');
     const horaFormatada = agora.toLocaleTimeString('pt-BR').replace(/:/g, '-');
     const nomeArquivo = 'ranking_' + dataFormatada + '_' + horaFormatada + '.txt';
 
-    // Cria um blob de texto (conteúdo do arquivo)
     const blob = new Blob([textoRanking], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
 
-    // Cria um link <a> temporário para download
     const a = document.createElement('a');
     a.href = url;
     a.download = nomeArquivo;
     document.body.appendChild(a);
-    a.click(); // Inicia o download
-    document.body.removeChild(a); // Remove o link depois
-    URL.revokeObjectURL(url); // Libera a memória
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }
 
+function limparRanking() {
+    localStorage.removeItem('rankingCronometro');
+    ranking = [];
+    atualizarRanking();
+    location.reload();
+}
 // Função para limpar o ranking do localStorage
 function limparRanking() {
     localStorage.removeItem('rankingCronometro'); // Remove o ranking do localStorage
