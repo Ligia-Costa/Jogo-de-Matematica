@@ -13,6 +13,12 @@ document.getElementById('resposta').addEventListener('keypress', function(event)
     }
 });
 
+document.getElementById('nome-usuario').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        iniciarJogo();
+    }
+});
+
 // Inicia o jogo: valida nome, esconde tela-incial, mostra jogo e inicializa a pontuação e tempo
 function iniciarJogo() {
     nomeUsuario = document.getElementById('nome-usuario').value.trim();
@@ -105,7 +111,7 @@ function salvarRanking() {
     let textoRanking = "Ranking do Matemáticando:\n\n";
 
     ranking.forEach(function(jogador, index) {
-        const pontuacaoFormatada = jogador.pontuacao + " pts";
+        const pontuacaoFormatada = jogador.pontos + " pts";
         textoRanking += obterOrdinal(index + 1) + ' Lugar: ' + jogador.nome + ' - ' + pontuacaoFormatada + '\n';
     });
 
