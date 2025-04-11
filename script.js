@@ -13,6 +13,7 @@ document.getElementById('resposta').addEventListener('keypress', function(event)
     }
 });
 
+// Evento para enviar resposta ao pressionar enter (Nome)
 document.getElementById('nome-usuario').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
         iniciarJogo();
@@ -64,7 +65,8 @@ function verificarResposta() {
     let respostaUsuario = document.getElementById('resposta').value;
     document.getElementById('resposta').value = '';
 
-    if (parseFloat(respostaUsuario) === parseFloat(respostaCorreta)) {
+    let respostaUsuarioFormatada = parseFloat(respostaUsuario).toFixed(1);
+    if (respostaUsuarioFormatada == respostaCorreta) {
         pontuacao++;
         document.getElementById('pontuacao').innerText = pontuacao;
         document.getElementById('resultado').innerText = 'Correto!';
@@ -101,6 +103,12 @@ function atualizarRanking() {
     });
 }
 
+// Função para obter posição
+function obterOrdinal(posicao) {
+    const sufixos = ['º', 'º', 'º']; 
+    return posicao + (sufixos[posicao - 1] || 'º');
+}
+
 // Função para salvar o ranking em um arquivo TXT
 function salvarRanking() {
     if (ranking.length === 0) {
@@ -111,8 +119,7 @@ function salvarRanking() {
     let textoRanking = "Ranking do Matemáticando:\n\n";
 
     ranking.forEach(function(jogador, index) {
-        const pontuacaoFormatada = jogador.pontos + " pts";
-        textoRanking += obterOrdinal(index + 1) + ' Lugar: ' + jogador.nome + ' - ' + pontuacaoFormatada + '\n';
+        textoRanking += obterOrdinal(index + 1) + ' Lugar: ' + jogador.nome + ' - ' + jogador.pontos + " pts\n";
     });
 
     const agora = new Date();
@@ -132,15 +139,16 @@ function salvarRanking() {
     URL.revokeObjectURL(url);
 }
 
+// Função para limpar Ranking
 function limparRanking() {
-    localStorage.removeItem('rankingCronometro');
+    localStorage.removeItem('rankingMatematicando');
     ranking = [];
     atualizarRanking();
     location.reload();
 }
 // Função para limpar o ranking do localStorage
 function limparRanking() {
-    localStorage.removeItem('rankingCronometro'); // Remove o ranking do localStorage
+    localStorage.removeItem('rankingMatematicando'); //Remove o ranking do localStorage
     ranking = []; // Limpa o array do ranking
     atualizarRanking(); // Atualiza a exibição do ranking
     location.reload(); // Recarrega a página para atualizar tudo
