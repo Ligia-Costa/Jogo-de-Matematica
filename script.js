@@ -75,10 +75,10 @@ function verificarResposta() {
     } else {
         document.getElementById('resultado').innerText = `Errado! A resposta correta era ${respostaCorreta}.`;
         document.getElementById('resultado').style.color = 'red';
-    // Espera 5 segundos antes de finalizar o jogo
+    // Espera 3 segundos antes de finalizar o jogo
         setTimeout(() => {
         finalizarJogo();
-}, 5000);
+}, 3000);
     }
 }
 
