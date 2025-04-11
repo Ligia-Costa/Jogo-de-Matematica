@@ -60,12 +60,17 @@ function gerarPergunta() {
     document.getElementById('pergunta').innerText = `${numero1} ${operador} ${numero2} = ?`;
 }
 
+// Função apenas uma casa decimal
+function truncarUmaCasaDecimal(numero) {
+    return Math.floor(numero * 10) / 10;
+}
+
 // Verifica a resposta inserida pelo usuário
 function verificarResposta() {
     let respostaUsuario = document.getElementById('resposta').value;
     document.getElementById('resposta').value = '';
 
-    let respostaUsuarioFormatada = parseFloat(respostaUsuario).toFixed(1);
+    let respostaUsuarioFormatada = truncarUmaCasaDecimal(parseFloat(respostaUsuario));
     if (respostaUsuarioFormatada == respostaCorreta) {
         pontuacao++;
         document.getElementById('pontuacao').innerText = pontuacao;
