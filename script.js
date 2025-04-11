@@ -56,12 +56,12 @@ function gerarPergunta() {
     let numero2 = Math.floor(Math.random() * 10) + 1;
     let operadores = ['+', '-', '*', '/'];
     let operador = operadores[Math.floor(Math.random() * operadores.length)];
-    respostaCorreta = eval(`${numero1} ${operador} ${numero2}`).toFixed(1);
+    respostaCorreta = apenasUmaCasaDecimal(eval(`${numero1} ${operador} ${numero2}`));
     document.getElementById('pergunta').innerText = `${numero1} ${operador} ${numero2} = ?`;
 }
 
 // Função apenas uma casa decimal
-function truncarUmaCasaDecimal(numero) {
+function apenasUmaCasaDecimal(numero) {
     return Math.floor(numero * 10) / 10;
 }
 
@@ -70,7 +70,7 @@ function verificarResposta() {
     let respostaUsuario = document.getElementById('resposta').value;
     document.getElementById('resposta').value = '';
 
-    let respostaUsuarioFormatada = truncarUmaCasaDecimal(parseFloat(respostaUsuario));
+    let respostaUsuarioFormatada = apenasUmaCasaDecimal(parseFloat(respostaUsuario));
     if (respostaUsuarioFormatada == respostaCorreta) {
         pontuacao++;
         document.getElementById('pontuacao').innerText = pontuacao;
@@ -78,7 +78,7 @@ function verificarResposta() {
         document.getElementById('resultado').style.color = 'green';
         gerarPergunta();
     } else {
-        document.getElementById('resultado').innerText = `Errado! A resposta correta era ${respostaCorreta}.`;
+        document.getElementById('resultado').innerText = `Errado! A resposta correta era ${respostaCorreta.toFixed(1)}.`;
         document.getElementById('resultado').style.color = 'red';
     // Espera 3 segundos antes de finalizar o jogo
         setTimeout(() => {
