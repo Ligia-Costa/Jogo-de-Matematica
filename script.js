@@ -33,6 +33,9 @@ function iniciarJogo() {
     document.getElementById('jogador-atual').innerText = `Jogador: ${nomeUsuario}`;
     iniciarTempo();
     gerarPergunta();
+
+    // Adiciona foco no campo de resposta após iniciar o jogo
+    document.getElementById('resposta').focus();
 }
 
 // Inicia o cronômetro de 30 segundos
