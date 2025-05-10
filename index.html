@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Jogo de Matemática</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="estilo.css">
-</head>
-<body>
-    <div id="tela-inicial" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
-        <h2>🧠Bem-vindo ao Matemáticando!🔢</h2>
-        <input type="text" id="nome-usuario" autocomplete="off" placeholder="Digite seu nome" required>
-        <button onclick="iniciarJogo()">Iniciar Jogo</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogo de Matemática</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="estilo.css">
+    </head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Tela Inicial -->
+    <div id="tela-inicial" class="flex flex-col items-center justify-center h-screen gap-4 px-4">
+        <h2 class="text-2xl md:text-4xl font-bold text-center">🧠 Bem-vindo ao Matemáticando! 🔢</h2>
+        <input type="text" id="nome-usuario" autocomplete="off" placeholder="Digite seu nome" required
+            class="border border-gray-300 rounded-md p-2 w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button onclick="iniciarJogo()"
+            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition w-full max-w-xs">Iniciar Jogo</button>
     </div>
 
-    <div id="container-jogo" class="d-none">
-        <h3 id="jogador-atual">Jogador: </h3>
-        <p id="pergunta"></p>
-        <input type="text" autocomplete="off" id="resposta" placeholder="Sua resposta">
-        <p id="resultado"></p>
-        <p>Tempo restante: <span id="tempo">30</span></p>
-        <p>Pontuação: <span id="pontuacao">0</span></p>
+    <!-- Tela do Jogo -->
+    <div id="container-jogo" class="hidden flex flex-col items-center gap-4 p-4">
+        <h3 id="jogador-atual" class="text-lg md:text-xl font-semibold">Jogador: </h3>
+        <p id="pergunta" class="text-xl md:text-2xl font-bold text-center"></p>
+        <input type="text" autocomplete="off" id="resposta" placeholder="Sua resposta"
+            class="border border-gray-300 rounded-md p-2 w-full max-w-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <p id="resultado" class="text-lg md:text-xl font-semibold"></p>
+        <div class="flex flex-col items-center gap-2">
+            <p class="text-sm md:text-base">Tempo restante: <span id="tempo" class="font-bold">30</span></p>
+            <p class="text-sm md:text-base">Pontuação: <span id="pontuacao" class="font-bold">0</span></p>
+            <p class="text-sm md:text-base">Nível: <span id="nivel-badge" class="badge bg-blue-500 text-white px-2 py-1 rounded-md">1</span></p>
+        </div>
     </div>
 
-    <div id="ranking-container" style="display: none; text-align: center;">
-        <h2>Ranking</h2>
-        <ul id="ranking" class="list-group"></ul>
-        <button onclick="novoJogo()">Novo Jogo</button>
-        <button id="salvar" onclick="salvarRanking()">Salvar Ranking</button>
-        <button id="limpar" onclick="limparRanking()">Limpar Ranking</button>
+    <!-- Tela de Ranking -->
+    <div id="ranking-container" class="hidden text-center p-4">
+        <h2 class="text-2xl md:text-4xl font-bold mb-4">Ranking</h2>
+        <ul id="ranking" class="list-none space-y-2"></ul>
+        <div class="flex flex-col md:flex-row justify-center gap-4 mt-4">
+            <button onclick="novoJogo()"
+                class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition w-full md:w-auto">Novo Jogo</button>
+            <button id="salvar" onclick="salvarRanking()"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition w-full md:w-auto">Salvar Ranking</button>
+            <button id="limpar" onclick="limparRanking()"
+                class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition w-full md:w-auto">Limpar Ranking</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
-    <!-- JS do Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
